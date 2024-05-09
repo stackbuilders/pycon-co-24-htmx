@@ -9,3 +9,9 @@
 ```
 devenv shell
 ```
+
+## Run
+
+```
+web
+```
