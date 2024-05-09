@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Random playlist</title>
+    <!-- HTMX through a CDN -->
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  </head>
+  <body>
+    <!-- 1. All elements can issue an HTTP request -->
+    <button hx-get="/song" hx-target="#song">
+      Want a song?
+    </button>
+    <div id="song"></div>
+  </body>
+</html>
