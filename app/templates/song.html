@@ -1,0 +1,12 @@
+<tr id="song-{{ song['id'] }}">
+    <td>{{ song['artist'] }}</td>
+    <td>{{ song['name'] }}</td>
+    <td>{{ song['country'] }}</td>
+    <td>
+      <button hx-delete="/songs/{{ song['id'] }}"
+              hx-target="#song-{{ song['id'] }}"
+              hx-swap="outerHTML">
+         Delete
+      </button>
+    </td>
+</tr>
