@@ -1,3 +1,4 @@
+{% for song in songs %}
 <tr id="song-{{ song['id'] }}">
     <td>{{ song['artist'] }}</td>
     <td>{{ song['name'] }}</td>
@@ -5,8 +6,11 @@
     <td>
       <button hx-delete="/songs/{{ song['id'] }}"
               hx-target="#song-{{ song['id'] }}"
-              hx-swap="outerHTML">
+              hx-indicator="#loading"
+              hx-swap="outerHTML"
+              hx-confirm="Are you sure?">
          Delete
       </button>
     </td>
 </tr>
+{% endfor %}

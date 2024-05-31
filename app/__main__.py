@@ -20,14 +20,6 @@ songs = [
     { "id": 13, "artist": "Los Prisioneros", "name": "Tren al Sur", "country": "🇨🇱" },
 ]
 
-def render_songs(q = '') -> str:
-    return "".join(
-        [render_template('song.html', song=song)
-         for song in songs
-         if q.lower() in f"{song['artist']}{song['name']}".lower()
-        ]
-    )
-
 @app.get('/')
 def index():
     return render_template('index.html', songs=songs)
@@ -35,7 +27,14 @@ def index():
 @app.get('/songs/search')
 def songs_search():
     q = request.args.get('q') or ''
-    return render_songs(q)
+    return render_template(
+        'songs.html',
+        songs=[
+          song
+          for song in songs
+          if q.lower() in f"{song['artist']}{song['name']}".lower()
+        ]
+    )
 
 @app.delete('/songs/<int:id_>')
 def remove_song(id_: int):
