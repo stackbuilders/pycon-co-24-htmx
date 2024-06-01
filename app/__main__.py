@@ -1,6 +1,6 @@
 import random
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
@@ -43,6 +43,31 @@ def remove_song(id_: int):
             songs.remove(song)
             break
     return ""
+
+
+@app.get('/songs/<int:id_>')
+def get_song(id_: int):
+    song = next((song for song in songs if song['id'] == id_))
+
+    if not song:
+        abort(404)
+
+    return render_template("songs.html", songs=[song])
+
+
+@app.route('/songs/update/<int:id_>', methods=['GET', 'PUT'])
+def update_song(id_: int):
+    song = next((song for song in songs if song['id'] == id_))
+
+    if not song:
+        abort(404)
+
+    if request.method == 'PUT':
+        song['name'] = request.form.get('name')
+        song['artist'] = request.form.get('artist')
+        return render_template("songs.html", songs=[song])
+
+    return render_template("update_song.html", song=song)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,0 +1,25 @@
+<tr id="song-{{ song['id'] }}">
+  <form hx-put="/songs/update/{{ song['id'] }}"
+        hx-target="#song-{{ song['id'] }}"
+        hx-swap="outerHTML">
+    <input type="hidden" name="id" />
+    <td>
+      <input type="text" name="artist" value="{{ song['artist'] }}" />
+    </td>
+    <td>
+      <input type="text" name="name" value="{{ song['name'] }}" />
+    </td>
+    <td>
+      -
+    </td>
+    <td>
+      <button type="submit">Send</button>
+      <button hx-get="/songs/{{ song['id'] }}"
+              hx-target="#song-{{ song['id'] }}"
+              hx-swap="outerHTML"
+              type="button">
+        Cancel
+      </button>
+    </td>
+  </form>
+</tr>

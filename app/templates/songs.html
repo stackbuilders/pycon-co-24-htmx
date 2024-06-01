@@ -4,6 +4,13 @@
     <td>{{ song['name'] }}</td>
     <td>{{ song['country'] }}</td>
     <td>
+      <button hx-get="/songs/update/{{ song['id'] }}"
+              hx-target="#song-{{ song['id'] }}"
+              hx-indicator="#loading"
+              hx-swap="outerHTML">
+        Edit
+      </button>
+
       <button hx-delete="/songs/{{ song['id'] }}"
               hx-target="#song-{{ song['id'] }}"
               hx-indicator="#loading"
