@@ -9,18 +9,23 @@ Promote the HTMX library and explaining how it works in a simple Web Application
 
 ## Install
 
-Use [devenv](https://devenv.sh/) to install all dependencies:
+Install [devenv](https://devenv.sh/)
+
+## Usage
+
+Spawn a [nix-shell]:
 
 ```
 devenv shell
 ```
 
-## Usage
+*Note:* This step may take a while the first time the command is executed
+because it installs all the project requirements.
 
-Run the following command inside a devenv shell:
+Start the Flask server:
 
 ```
-web
+devenv up
 ```
 
 This will run the Flask server and you would be able to see the application in
@@ -39,3 +44,5 @@ a pull request for changes.
 ---
 <img src="https://www.stackbuilders.com/media/images/Sb-supports.original.png" alt="Stack Builders" width="50%"></img>
 [Check out our libraries](https://github.com/stackbuilders/) | [Join our team](https://www.stackbuilders.com/join-us/)
+
+[nix-shell]: https://nixos.wiki/wiki/Development_environment_with_nix-shell
