@@ -1,0 +1,14 @@
+body {
+  padding: 2rem;
+}
+
+input {
+  margin-bottom: 1rem;
+  width: 50%;
+}
+
+table, th, td {
+  border: 1px solid black;
+  text-align: center;
+  width: 50%;
+}
