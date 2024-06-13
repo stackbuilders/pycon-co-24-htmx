@@ -4,12 +4,46 @@
     <title>Random playlist</title>
     <!-- HTMX through a CDN -->
     <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+    <link href="./style.css"></link>
+<style>
+body {
+  padding: 2rem;
+}
+
+input {
+  margin-bottom: 1rem;
+  width: 50%;
+}
+
+table, th, td {
+  border: 1px solid black;
+  text-align: center;
+  width: 50%;
+}
+</style>
   </head>
   <body>
-    <!-- 1. All elements can issue an HTTP request -->
-    <button hx-get="/song" hx-target="#song">
-      Want a song?
-    </button>
-    <div id="song"></div>
+    <input hx-get="/songs/search"
+           hx-trigger="keyup delay:500ms changed"
+           hx-target="#songs"
+           hx-swap="innerHTML"
+           hx-indicator="#loading"
+           type="text"
+           name="q"
+           placeholder="Search..." />
+
+    <p class="htmx-indicator" id="loading">Loading...</p>
+
+    <table>
+      <thead>
+        <th>Artist</th>
+        <th>Song</th>
+        <th>Country</th>
+        <th>Actions</th>
+      </thead>
+      <tbody id="songs">
+        {% include "songs.html" %}
+      </tbody>
+    </table>
   </body>
 </html>
